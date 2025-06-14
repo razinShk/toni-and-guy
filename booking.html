@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Book Appointment | TONI&GUY Four Bungalows</title>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+  rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link rel="stylesheet" href="styles.css">
+ <script>
+  // Simple login check (for demo)
+  if (!localStorage.getItem('tg_logged_in')) {
+   window.location.href = 'login.html?redirect=booking.html';
+  }
+ </script>
+</head>
+
+<body class="booking-page">
+ <!-- Navigation -->
+ <nav class="navbar">
+  <div class="nav-container">
+   <div class="logo-container">
+    <div class="logo">TONI&GUY</div>
+    <div class="logo-subtitle">FOUR BUNGLOWS</div>
+   </div>
+   <ul class="nav-links">
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+   </ul>
+   <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+   </div>
+  </div>
+ </nav>
+
+ <div class="booking-container">
+  <div class="auth-header">
+   <h1>Book Your Appointment</h1>
+   <p>Select your preferred service and time</p>
+  </div>
+
+  <div class="service-select">
+   <div class="service-card" data-service="Haircut & Styling">
+    <i class="fas fa-cut"></i>
+    <h3>Haircut & Styling</h3>
+    <p>Expert cuts and styling</p>
+   </div>
+   <div class="service-card" data-service="Color & Highlights">
+    <i class="fas fa-paint-brush"></i>
+    <h3>Color & Highlights</h3>
+    <p>Premium color services</p>
+   </div>
+   <div class="service-card" data-service="Hair Treatments">
+    <i class="fas fa-spa"></i>
+    <h3>Hair Treatments</h3>
+    <p>Luxury hair care</p>
+   </div>
+   <div class="service-card" data-service="Bridal Services">
+    <i class="fas fa-heart"></i>
+    <h3>Bridal Services</h3>
+    <p>Complete bridal packages</p>
+   </div>
+  </div>
+
+  <form id="bookingForm" class="lux-form" action="https://formsubmit.co/razinshaikh3133@gmail.com" method="POST">
+   <!-- FormSubmit Configuration -->
+   <input type="hidden" name="_subject" value="New Booking Request - TONI&GUY Four Bungalows">
+   <input type="hidden" name="_template" value="table">
+   <input type="hidden" name="_captcha" value="false">
+   <input type="hidden" name="_next" value="booking-success.html">
+
+   <div class="form-group">
+    <label for="name"><i class="fas fa-user"></i> Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name">
+   </div>
+   <div class="form-group">
+    <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+    <input type="tel" id="phone" name="phone" required placeholder="Your contact number">
+   </div>
+   <div class="form-group">
+    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+    <input type="email" id="email" name="email" required placeholder="Your email address">
+   </div>
+   <div class="form-group">
+    <label for="date"><i class="fas fa-calendar"></i> Preferred Date</label>
+    <input type="date" id="date" name="date" required min="">
+   </div>
+
+   <div class="form-group">
+    <label><i class="fas fa-clock"></i> Available Time Slots</label>
+    <div class="time-slots">
+     <div class="time-slot" data-time="10:00" tabindex="0" role="button">10:00 AM</div>
+     <div class="time-slot" data-time="11:00" tabindex="0" role="button">11:00 AM</div>
+     <div class="time-slot" data-time="12:00" tabindex="0" role="button">12:00 PM</div>
+     <div class="time-slot unavailable" data-time="13:00">1:00 PM</div>
+     <div class="time-slot" data-time="14:00" tabindex="0" role="button">2:00 PM</div>
+     <div class="time-slot" data-time="15:00" tabindex="0" role="button">3:00 PM</div>
+     <div class="time-slot" data-time="16:00" tabindex="0" role="button">4:00 PM</div>
+     <div class="time-slot" data-time="17:00" tabindex="0" role="button">5:00 PM</div>
+    </div>
+    <input type="hidden" name="selected_time" id="selected_time" required>
+   </div>
+
+   <div class="form-group">
+    <label for="service"><i class="fas fa-cut"></i> Selected Service</label>
+    <input type="hidden" name="selected_service" id="selected_service" required>
+   </div>
+
+   <div class="form-group">
+    <label for="notes"><i class="fas fa-comment"></i> Special Requests</label>
+    <textarea id="notes" name="notes" rows="3" placeholder="Any special requirements or preferences"></textarea>
+   </div>
+
+   <button type="submit" class="btn-primary">
+    <i class="fas fa-calendar-check"></i> Confirm Booking
+   </button>
+  </form>
+
+  <div id="bookingSuccess" class="success-message" style="display:none;">
+   <i class="fas fa-check-circle"></i>
+   <h2>Booking Confirmed!</h2>
+   <p>Thank you for choosing TONI&GUY Four Bungalows. We'll see you soon!</p>
+   <a href="index.html" class="btn-primary">Back to Home</a>
+  </div>
+ </div>
+
+ <!-- Sticky Right Navigation -->
+ <div class="sticky-nav">
+  <a href="booking.html" class="book-now">
+   <i class="fas fa-calendar-check"></i>
+   Book An Appointment
+  </a>
+  <a href="https://wa.me/919876543210" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+   WhatsApp
+  </a>
+ </div>
+
+ <!-- Scripts -->
+ <script src="script.js"></script>
+ <script>
+  // Set minimum date to today
+  document.querySelector('input[type="date"]').min = new Date().toISOString().split('T')[0];
+
+  // Service card selection
+  document.querySelectorAll('.service-card').forEach(card => {
+   card.addEventListener('click', function () {
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    this.classList.add('selected');
+    document.getElementById('selected_service').value = this.dataset.service;
+   });
+  });
+
+  // Time slot selection
+  document.querySelectorAll('.time-slot:not(.unavailable)').forEach(slot => {
+   slot.addEventListener('click', function () {
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    this.classList.add('selected');
+    document.getElementById('selected_time').value = this.textContent;
+   });
+  });
+
+  // Form validation and submission
+  document.getElementById('bookingForm').addEventListener('submit', function (e) {
+   // Prevent form submission if validations fail
+   if (!document.querySelector('.service-card.selected')) {
+    e.preventDefault();
+    alert('Please select a service');
+    return;
+   }
+   if (!document.getElementById('selected_time').value) {
+    e.preventDefault();
+    alert('Please select a time slot');
+    return;
+   }
+
+   // Get form data for WhatsApp message
+   const name = document.getElementById('name').value;
+   const phone = document.getElementById('phone').value;
+   const email = document.getElementById('email').value;
+   const date = document.getElementById('date').value;
+   const time = document.getElementById('selected_time').value;
+   const service = document.getElementById('selected_service').value;
+   const notes = document.getElementById('notes').value;
+
+   // Format WhatsApp message
+   const message = `*New Booking Request - TONI&GUY*%0A%0A` +
+    `*Name:* ${name}%0A` +
+    `*Phone:* ${phone}%0A` +
+    `*Email:* ${email}%0A` +
+    `*Date:* ${date}%0A` +
+    `*Time:* ${time}%0A` +
+    `*Service:* ${service}%0A` +
+    `*Notes:* ${notes}`;
+
+   // Open WhatsApp in new tab after small delay
+   setTimeout(() => {
+    window.open(`https://wa.me/919665448256?text=${message}`, '_blank');
+   }, 500);
+
+   // Let the form submit normally to FormSubmit
+   return true;
+  });
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login | TONI&GUY Four Bungalows</title>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+  rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="auth-page">
+ <div class="auth-container">
+  <div class="auth-header">
+   <h1>Welcome Back</h1>
+   <p>Experience luxury hair care at TONI&GUY</p>
+  </div>
+  <form id="loginForm" class="lux-form">
+   <div class="form-group">
+    <label><i class="fas fa-envelope"></i> Email</label>
+    <input type="email" name="email" required placeholder="Enter your email">
+   </div>
+   <div class="form-group">
+    <label><i class="fas fa-lock"></i> Password</label>
+    <input type="password" name="password" required placeholder="Enter your password">
+   </div>
+   <div style="text-align: right; margin-bottom: 1rem;">
+    <a href="#" style="color: #bfa77a; text-decoration: none; font-size: 0.9rem;">Forgot Password?</a>
+   </div>
+   <button type="submit" class="btn-primary">
+    <i class="fas fa-sign-in-alt"></i> Login
+   </button>
+  </form>
+  <p style="text-align:center;margin-top:1.5rem;color:#6d5c47;">
+   Don't have an account?
+   <a href="register.html" style="color:#bfa77a;text-decoration:none;font-weight:500;">Register</a>
+  </p>
+ </div>
+ <script>
+  document.getElementById('loginForm').onsubmit = function (e) {
+   e.preventDefault();
+   // For demo, any login is accepted
+   localStorage.setItem('tg_logged_in', '1');
+   const params = new URLSearchParams(window.location.search);
+   const redirect = params.get('redirect') || 'index.html';
+   window.location.href = redirect;
+  };
+ </script>
+</body>
+
+</html>

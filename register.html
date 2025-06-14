@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Register | TONI&GUY Four Bungalows</title>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+  rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+ <div class="container" style="max-width:400px;margin-top:80px;">
+  <h1 style="text-align:center;font-family:'Playfair Display',serif;">Register</h1>
+  <form id="registerForm" class="lux-form">
+   <label>Name</label>
+   <input type="text" name="name" required>
+   <label>Email</label>
+   <input type="email" name="email" required>
+   <label>Password</label>
+   <input type="password" name="password" required>
+   <button type="submit" class="btn-primary" style="width:100%;margin-top:1.2rem;">Register</button>
+  </form>
+  <p style="text-align:center;margin-top:1.2rem;">Already have an account? <a href="login.html">Login</a></p>
+ </div>
+ <script>
+  document.getElementById('registerForm').onsubmit = function (e) {
+   e.preventDefault();
+   // For demo, any registration is accepted
+   localStorage.setItem('tg_logged_in', '1');
+   window.location.href = 'index.html';
+  };
+ </script>
+</body>
+
+</html>
